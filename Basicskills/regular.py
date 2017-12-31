@@ -9,8 +9,8 @@ class CheckSql(object):
         self._endSemicolon = re.compile(r'\(\s*\"\s*call.*?;\s*\"', re.S)
         pass
 
-    def check_sentence(self):
-        with open(r"Regular.txt") as codeFile:
+    def check_sentence(self, path):
+        with open(path) as codeFile:
             for line in codeFile:
                 for matched in re.findall(self._pattern, line):
                     self.check_sem(matched)
@@ -21,9 +21,10 @@ class CheckSql(object):
         else:
             print("success")
 
-test = CheckSql()
 
-test.check_sentence()
+if __name__ == "__main__":
+    test = CheckSql()
+    test.check_sentence(r"Regular.txt")
 
 
 
